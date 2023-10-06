@@ -13,16 +13,18 @@ export default function Index({ navigation }) {
                 <View>
                     <Text style={styles.mainText}>ReadMore</Text>
                     <Text style={styles.subText}>Read anytime, anywhere with our convenient book app.</Text>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                    <Text>  {"\n"}
+                   {"\n"}
+                   {"\n"}
+                   {"\n"}
+                   {"\n"}</Text>
+                 
                     <Image style={styles.image} source={require("../assets/books.jpg")}></Image>
-                    <br />
-                    <br />
+                    <Text>{"\n"}
+                   {"\n"}</Text>
+                   
                     <Text style={styles.TextThree}>Keep your library with you where-ever you go.</Text>
-                    <Text style={styles.TextFour}>Access your favourite books with just a click on our mobile app.<br />Explore a world of books at your fingertips.</Text>
+                    <Text style={styles.TextFour}>Access your favourite books with just a click on our mobile app.{"\n"}Explore a world of books at your fingertips.</Text>
                 </View>
                 <TouchableOpacity>
                     <Pressable onPress={goToRegister}>

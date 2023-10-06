@@ -1,67 +1,94 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, Image, View, Button, ImageBackground, TextInput, Pressable, ScrollView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  Button,
+  ImageBackground,
+  TextInput,
+  Pressable,
+  ScrollView,
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Register({ navigation }) {
-
-  const [Name, setName] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
-  const [PhoneNumber, setPhoneNumber] = useState('');
-  const [response, setResponse] = useState('');
-  const [fname, setFname] = useState('');
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [response, setResponse] = useState("");
+  const [fname, setFname] = useState("");
 
   // This function is called when the user clicks on the "Sign Up" button
   const submit = () => {
-    fetch('http://localhost/Project1/myApp/API/register.php',
-      {
-        method: 'POST',
-        header: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          Name: Name,
-          PhoneNumber: PhoneNumber,
-          Email: Email,
-          Password: Password,
-        })
-      }).then((res) => res.json())
+    fetch("http://localhost/Project1/myApp/API/register.php", {
+      method: "POST",
+      header: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Name: Name,
+        PhoneNumber: PhoneNumber,
+        Email: Email,
+        Password: Password,
+      }),
+    })
+      .then((res) => res.json())
       .then((response) => {
-        setResponse(response.msg)
-        setFname(response.Name)
-
+        setResponse(response.msg);
+        setFname(response.Name);
       })
       .catch((error) => {
-        alert(error)
-      })
-
-  }
+        alert(error);
+      });
+  };
 
   // This function is called when the user clicks on the "Click Here To Login" button
   const goToLogin = () => {
-    navigation.navigate("Login")
-  }
+    navigation.navigate("Login");
+  };
 
   return (
-    <ImageBackground source={require('../assets/books.jpg')} style={styles.container}>
+    <ImageBackground
+      source={require("../assets/books.jpg")}
+      style={styles.container}
+    >
       <ScrollView style={styles.firstView}>
         <Text style={styles.text}>Registration</Text>
         <View style={styles.buttonStyles}>
           <View style={styles.textBox}>
-            <TextInput style={styles.tex} placeholder='Name' onChangeText={setName} />
+            <TextInput
+              style={styles.tex}
+              placeholder="Name"
+              onChangeText={setName}
+            />
           </View>
           <View style={styles.textBox}>
-            <TextInput style={styles.tex} placeholder='Phone Number' onChangeText={setPhoneNumber} />
+            <TextInput
+              style={styles.tex}
+              placeholder="Phone Number"
+              onChangeText={setPhoneNumber}
+            />
           </View>
           <View style={styles.textBox}>
-            <TextInput style={styles.tex} placeholder='Email' onChangeText={setEmail} />
+            <TextInput
+              style={styles.tex}
+              placeholder="Email"
+              onChangeText={setEmail}
+            />
           </View>
           <View style={styles.textBox}>
-            <TextInput style={styles.tex} placeholder='Password' secureTextEntry={true} onChangeText={setPassword} />
+            <TextInput
+              style={styles.tex}
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={setPassword}
+            />
           </View>
-          <br />
+          <Text>{"\n"}</Text>
 
           {/* This is the "Sign Up" button */}
           <TouchableOpacity>
@@ -71,23 +98,39 @@ export default function Register({ navigation }) {
               </View>
             </Pressable>
           </TouchableOpacity>
-          <br />
+          <Text>{"\n"}</Text>
           {/* This is where the response message will be displayed */}
           <View>
-            <Text style={{ color: "brown", fontWeight: "bold", textAlign: "center", fontStyle: "" }}>{response} {fname}</Text>
+            <Text
+              style={{
+                color: "brown",
+                fontWeight: "bold",
+                textAlign: "center",
+                fontStyle: "",
+              }}
+            >
+              {response} {fname}
+            </Text>
           </View>
 
           {/* This is the "Click Here To Login" button */}
           <Pressable onPress={goToLogin}>
-            <Text style={{ color: "brown", fontWeight: "bold", textAlign: "center", fontStyle: "", textDecorationLine: "underline" }}>Click Here To Login</Text>
+            <Text
+              style={{
+                color: "brown",
+                fontWeight: "bold",
+                textAlign: "center",
+                fontStyle: "",
+                textDecorationLine: "underline",
+              }}
+            >
+              Click Here To Login
+            </Text>
           </Pressable>
         </View>
       </ScrollView>
-
-
     </ImageBackground>
-
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -111,7 +154,7 @@ const styles = StyleSheet.create({
     padding: 120,
   },
   firstView: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     height: "66%",
     width: "100%",
     position: "absolute",
@@ -146,7 +189,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     textAlign: "center",
-
   },
   button: {
     borderRadius: 30,
@@ -159,4 +201,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
-})
+});

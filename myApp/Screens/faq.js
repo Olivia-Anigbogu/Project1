@@ -12,7 +12,7 @@ export default function FAQ({ navigation }) {
           Frequently Asked Questions(FAQ)
         </Text>
       </Ionicons>
-      <br />
+      {"\n"}
       <View
         style={{
           borderBottomWidth: 1,
@@ -20,7 +20,7 @@ export default function FAQ({ navigation }) {
           backgroundColor: "black",
         }}
       ></View>
-      <br />
+      {"\n"}
       <View>
         <Ionicons name="book-sharp" size={18} style={{ marginLeft: 10 }}>
           <Text style={styles.question}>Why can't I edit my profile?</Text>

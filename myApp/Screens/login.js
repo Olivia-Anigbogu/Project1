@@ -55,15 +55,15 @@ export default function Login({ navigation }) {
 
                     <View style={styles.textBox}>
                         <TextInput style={styles.tex} placeholder='Password' onChangeText={setPassword} secureTextEntry={true} />
-                    </View><br />
+                    </View><Text>{"\n"}</Text>
                     <TouchableOpacity>
                         <Pressable onPress={submit}>
                             <View style={styles.button}>
-                                <Text style={styles.buttonText}>Sign in</Text>
+                                <Text style={styles.buttonText}>Sign in  {"\n"}</Text>
                             </View>
                         </Pressable>
                     </TouchableOpacity>
-                    <br />
+                  
                     <View>
                         <TouchableOpacity>
                             <Pressable onPress={goToRegister}>
